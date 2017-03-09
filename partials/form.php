@@ -2,6 +2,7 @@
 <div class="container form">
 
 	<div class="col-xs-12 col-lg-10 col-lg-offset-1 contact">
+	
 
 		<form action="index.php" method="post">
 			<!-- <div class="row row-sm-offset"> -->
@@ -41,7 +42,7 @@
 			<div class="col-xs-12 col-md-3">
 				<div class="form-group">
 					<p>Age:</p>
-					<input id="age" value="<?= !empty($age) ? $age : '' ?>" type="text" class="form-control" placeholder="Your Age" name="age" ><span class="text-danger"><?= !empty($errors['age']) ? $errors['age'] : '' ?> </span>
+					<input id="age" value="<?= !empty($age) ? $age : '' ?>" type="number" class="form-control" placeholder="Your Age" name="age" ><span class="text-danger"><?= !empty($errors['age']) ? $errors['age'] : '' ?> </span>
 				</div>
 			</div>
 			<div class="col-xs-12">
