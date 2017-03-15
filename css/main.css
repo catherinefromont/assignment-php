@@ -1,11 +1,50 @@
-div.thanks{
+body{
+	background-image: url('background.jpg');
+	background-repeat: no-repeat;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+div.col-xs-12.col-lg-10.col-lg-offset-1.contact{
 	padding: 20px;
 }
 
-button.buttonreturn{
-padding: 20px;
+input.btn.btn-primary.btn-lg:hover{
+	background-color: #ffcfa1;
+	}
+
+input.btn.btn-primary.btn-lg{
+	background-color: white;
+	color: black;
+	padding: 10px;
+	margin-top: 20px;
+	border: 2px solid black;
 }
 
-a.return{
-text-decoration: none;
+p{
+	font-size: 1.5em;
+
 }
+
+div.thanks{
+
+	padding: 50px;
+	margin: 50px;
+
+}
+
+a.btn.btn-primary.btn-lg:hover{
+background-color: #ffcfa1;
+}
+
+a.btn.btn-primary.btn-lg{
+background-color: white;
+color: black;
+padding: 10px;
+margin-top: 20px;
+border: 2px solid black;
+}
+
+

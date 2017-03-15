@@ -30,6 +30,9 @@ function ValidateEmail($email) {
 	if (empty($email)) {
 	return "Email is required";
 	}
+	else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		  return "Please enter a correct Email Address";
+	}
 	else if($email > 100){
 	return "Email cannot be longer than 100 characters";
 	}
@@ -40,18 +43,44 @@ function ValidateAddress($address) {
 	if (empty($address)) {
 	return "Address is required";
 	}
+	else if (!preg_match("/^[0-9]+\ +[a-zA-Z]/", $address)) {
+	   return "Please enter a correct address";
+	}
 	else if(strlen($address) > 200){
 	return "Address cannot be longer than 200 characters";
 	}
 	return false;
 }
 
-function ValidateDob($dob) {
-	if ($dob == '') {
+function ValidateDate($date) {
+	if ($date == '') {
 	return "Date of Birth is required";
 	}
-	return false;
+	
+	$time = new DateTime('now');
+
+	$newtime = $time->modify('-150 Year')->format('Y-m-d');
+
+	if ($date == '') {
+		return "<b>Date of Birth</b> is required";
+	}
+	else if ($date <= $newtime){
+	//             {
+	//                 $validateFlag = false;
+		return "We really dont think you were born more than 150 years ago.";
+	}
+	
+	// else if ($date <= $babytime){
+	// //             {
+	// //                 $validateFlag = false;
+	// 	return "We really dont think you were born more than 5 years ago.";
+	// }
+
+return false;
+
 }
+
+
 
 function ValidateAge($age) {
 	

@@ -1,5 +1,5 @@
 function validate() {
-  if (validateName() && validateEmail() && validateAge() && validateDob() && validateAddress() && validateMovie() && validateGender()){
+  if (validateName() && validateEmail() && validateAge() && validateDate() && validateAddress() && validateMovie() && validateGender()){
   return true;
 }
   return false;
@@ -49,7 +49,7 @@ age = document.getElementById('age').value;
 // pos2 = fullName.indexOf("@");
 // pos3 = fullName.indexOf(".");
 
-if (parseInt(age) && parseInt(age) >=0 && parseInt(age) <=120) {
+if (parseInt(age) && parseInt(age) >=0 && parseInt(age) <=151) {
     // alert(fullName + "is a valid name!");
    document.getElementById('ageError').innerHTML = "correct age";
    return true;
@@ -63,18 +63,25 @@ if (parseInt(age) && parseInt(age) >=0 && parseInt(age) <=120) {
 
   }
 
- // function validateDob(){
+ function validateDate(){
 
- //     var dob = document.forms["ProcessInfo"]["txtDOB"].value;
- //     var data = dob.split("/");
- //     // using ISO 8601 Date String
- //     if (isNaN(Date.parse(data[2] + "-" + data[1] + "-" + data[0]))) {
- //         return false;
- //     }
+ var input = document.getElementById("date");
+    var today = new Date();
+    var day = today.getDate();
 
- //     return true;
- // }
+    // Set month to string to add leading 0
+    var mon = new String(today.getMonth()+1); //January is 0!
+    var yr = today.getFullYear();
 
+      if(mon.length < 2) { mon = "0" + mon; }
+      if(day.length < 2) { dayn = "0" + day; }
+
+      var date = new String( yr + '-' + mon + '-' + day );
+
+      
+    // input.disabled = false; 
+    input.setAttribute('max', date);
+}
 
 
 function validateMovie(){
@@ -107,6 +114,19 @@ function validateGender(){
 output.innerHTML = ""
 return true;
 }
+
+
+// function validate(form)
+// {
+//     var genderM=form.gender_male;
+//     var genderF=form.gender_female;
+
+//     if(genderM.checked==false && genderF.checked==false ) {
+//         alert("You must select male or female");
+//         return false;
+//     }   
+// }
+
 
 // function getAge(dateString) {
 //     var today = new Date();

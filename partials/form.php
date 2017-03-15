@@ -19,7 +19,7 @@
 			<div class="col-xs-12">
 				<div class="form-group">
 					<p>Email:</p>
-					<input id="email" value="<?= !empty($email) ? $email : '' ?>" type="email" class="form-control" placeholder="Email address" name="email" ><span class="text-danger"><?= !empty($errors['email']) ? $errors['email'] : '' ?> </span>
+					<input id="email" value="<?= !empty($email) ? $email : '' ?>" type="text" class="form-control" placeholder="Email address" name="email" ><span class="text-danger"><?= !empty($errors['email']) ? $errors['email'] : '' ?> </span>
 				</div>
 			</div>
 
@@ -35,7 +35,7 @@
 			<div class="col-xs-12 ">
 				<div class="form-group">
 					<p>Enter your Date of Birth:</p>
-					<input id="dob" value="<?= !empty($dob) ? $dob : '' ?>" type="date" class="form-control"  name="dob" ><span class="text-danger"><?=!empty($errors['dob']) ? $errors['dob'] : '' ?> </span>
+					<input id="date" value="<?= !empty($date) ? $date : '' ?>" type="date" class="form-control"  name="date" max="<?=date('Y-m-d')?>" ><span class="text-danger"><?=!empty($errors['date']) ? $errors['date'] : '' ?> </span>
 				</div>
 			</div>
 
