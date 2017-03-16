@@ -52,33 +52,108 @@ function ValidateAddress($address) {
 	return false;
 }
 
-function ValidateDate($date) {
-	if ($date == '') {
-	return "Date of Birth is required";
-	}
-	
-	$time = new DateTime('now');
-
-	$newtime = $time->modify('-150 Year')->format('Y-m-d');
-
-	if ($date == '') {
-		return "<b>Date of Birth</b> is required";
-	}
-	else if ($date <= $newtime){
-	//             {
-	//                 $validateFlag = false;
-		return "We really dont think you were born more than 150 years ago.";
-	}
-	
-	// else if ($date <= $babytime){
-	// //             {
-	// //                 $validateFlag = false;
-	// 	return "We really dont think you were born more than 5 years ago.";
-	// }
-
-return false;
-
+function validateDate($date) {
+    if (empty($date)) {
+        return 'Date of Birth is required.';
+    }
+ 
+    if (!checkDateManually($date)) {
+        return 'Please enter a correct Date of Birth.';
+    }
+ 
+    if (DateTime::createFromFormat('Y-m-d', $date)) {
+        $date = DateTime::createFromFormat('Y-m-d', $date);
+    }
+    else if (DateTime::createFromFormat('Y/m/d', $date)) {
+        $date = DateTime::createFromFormat('Y/m/d', $date);
+    }
+    else if (DateTime::createFromFormat('d-m-Y', $date)) {
+        $date = DateTime::createFromFormat('d-m-Y', $date);
+    }
+    else if (DateTime::createFromFormat('d/m/Y', $date)) {
+        $date = DateTime::createFromFormat('d/m/Y', $date);
+    }
+    else {
+        return 'Please enter a correct Date of Birth.';
+    }
+ 
+    $time = new DateTime('now');
+    $today = new DateTime('now');
+ 
+    $date150YearsAgo = DateTime::createFromFormat('Y-m-d', $time->modify('-150 Year')->format('Y-m-d'));
+ 
+    $chosenDate = $date->format('Y-m-d');
+    $chosenDay = $date->format('d');
+    $chosenMonth = $date->format('m');
+    $chosenYear = $date->format('Y');
+    $todaysDate = $today->format('Y-m-d');
+    $minDate = $date150YearsAgo->format('Y-m-d');
+ 
+    if ($chosenDate <= $minDate){
+        return 'We really don\'t think you were born more than 150 years ago.';
+    }
+    else if ($chosenDate >= $todaysDate){
+        return 'You cannot be born after today.';
+    }
+    else if (!checkdate($chosenMonth, $chosenDay, $chosenYear)) {
+        return 'Please enter a correct Date of Birth.';
+    }
+ 
+    return false;
 }
+ 
+function checkDateManually($date) {
+    $dateArray = [];
+ 
+    if(strpos($date, '/') !== false) {
+        $dateArray = explode("/", $date);
+    }
+    else if(strpos($date, '-') !== false){
+        $dateArray = explode("-", $date);
+    }
+ 
+    if (empty($dateArray)) {
+        return false;
+    }
+ 
+    if($dateArray && count($dateArray) === 3 && (int)$dateArray[0] > 0 && (int)$dateArray[1] > 0 && (int)$dateArray[2] > 0) {
+        if (checkdate($dateArray[1], $dateArray[2], $dateArray[0])) {
+            return true;
+        } else if (checkdate($dateArray[1], $dateArray[0], $dateArray[2])) {
+            return true;
+        }
+        return false;
+    }
+ 
+    return false;
+}
+// function ValidateDate($date) {
+// 	if ($date == '') {
+// 	return "Date of Birth is required";
+// 	}
+	
+// 	$time = new DateTime('now');
+
+// 	$newtime = $time->modify('-150 Year')->format('Y-m-d');
+
+// 	if ($date == '') {
+// 		return "Date of Birth is required";
+// 	}
+// 	else if ($date <= $newtime){
+// 	//             {
+// 	//                 $validateFlag = false;
+// 		return "We really dont think you were born more than 150 years ago.";
+// 	}
+	
+// 	// else if ($date <= $babytime){
+// 	// //             {
+// 	// //                 $validateFlag = false;
+// 	// 	return "We really dont think you were born more than 5 years ago.";
+// 	// }
+
+// return false;
+
+// }
 
 
 
@@ -88,7 +163,10 @@ function ValidateAge($age) {
 	return "Age is required";
 	}
 	else if((int)$age >= 151){
-	return "Age cannot be larger than 150 years";
+	return "Age must be less than 150 years";
+	}
+	else if((int)$age < 5){
+	return "Age must be larger than 5 years old";
 	}
 	return false;
 }
