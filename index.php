@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$email = $_POST["email"];
 	$address = $_POST["address"];
 	$date = $_POST["date"];
-	// $age = $_POST["age"];
+	$age = $_POST["age"];
 	$movie = !empty($_POST["movie"]) ? $_POST['movie'] : '';
 	$gender = !empty($_POST["gender"]) ? $_POST['gender'] : '';
 
@@ -22,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$errors['email'] = validateEmail($email);
 	$errors['address'] = validateAddress($address);
 	$errors['date'] = validateDate($date);
-	// $errors['age'] = validateAge($age);
+	$errors['age'] = validateAge($age);
 	$errors['movie'] = validateMovie($movie);
 	$errors['gender'] = validateGender($gender);
 

@@ -1,12 +1,14 @@
 function validate() {
-	var nameError = validateName();
-	var emailError = validateEmail();
-	var addressError = validateAddress();
-	// var ageError = validateAge();
-	// var dateError = validateDate();
-	var dateError = validateDate();
-	var genderError = validateGender();
-	var movieError = validateMovie();
+	var name = validateName();
+
+	
+	var email = validateEmail();
+	var address = validateAddress();
+	// var age = validateAge();
+	// var date = validateDate();
+	var date = validateDOB();
+	var gender = validateGender();
+	var movie = validateMovie();
 
 		
 	// console.log('Name: ' + nameError);
@@ -19,8 +21,9 @@ function validate() {
 
 	
 
-  if (validateName() && validateEmail() && validateAddress() && validateDate() && validateMovie() && validateGender()){
+  if (name && email && address && gender && date && movie ){
   	
+
   return true;
 }
   return false;
@@ -32,7 +35,7 @@ function validateEmail() {
 	mailAddress = document.getElementById('email').value;
 	pos1 = mailAddress.indexOf("@")
 	pos2 = mailAddress.indexOf(".")
-	if (pos1 >= 0 && pos2 >= 0){
+	if (pos1 >= 0 && pos2 >= 0 && mailAddress.length <= 100){
 		// alert(fullName + "is a valid name!");
 		document.getElementById('emailError').innerHTML = mailAddress = "is a valid email address!"
 		return true;
@@ -51,7 +54,7 @@ function validateName() {
 	pos1 = fullName.indexOf(" ")
 	pos2 = fullName.indexOf("@")
 	pos3 = fullName.indexOf(".")
-	if (pos1 >= 0 && pos2 < 0 && pos3 < 0 && fullName.length > 2 && ! parseInt(fullName)){
+	if (pos1 >= 0 && pos2 < 0 && pos3 < 0 && fullName.length <= 40){
 		// alert(fullName + "is a valid name!");
 		document.getElementById('nameError').innerHTML = fullName = "is a valid name!"
 		return true;
@@ -80,21 +83,24 @@ function validateAddress(){
 
 }
 
-function validateDate() {
+function validateDOB() {
  var dateofbirth = document.getElementById('date');
  var calculateAge = getAge(dateofbirth.value);
  var date = document.getElementById('age').value;
  
 // (getAge(document.getElementById('dob').value));
- 
- if (calculateAge != date || parseInt(date) >= 150 || parseInt(date) < 0) {
- document.getElementById('ageError').innerHTML = "[JS]Please enter a valid age, based on you date of birth";
+
+if (calculateAge != date || parseInt(date) >= 150 || parseInt(date) < 0) {
+  document.getElementById('ageError').innerHTML = "Please enter a valid age, based on you date of birth";
  return false;
- }
- else {
- document.getElementById('ageError').innerHTML = "";
+}
+
+
+else {
+ document.getElementById('ageError').innerHTML = "That fucking awesome your killing it JS";
  return true;
- }
+}
+
 }
 function getAge(date) {
  var today = new Date();
@@ -102,7 +108,7 @@ function getAge(date) {
  var age = today.getFullYear() - birthDate.getFullYear();
  var m = today.getMonth() - birthDate.getMonth();
  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
- age--;
+   age--;
  }
  return age;
 }
@@ -111,6 +117,38 @@ function calculateAge() {
  var age = getAge(date.value);
  document.getElementById('age').value = age;
 }
+
+// function validateDate() {
+//  var dateofbirth = document.getElementById('date');
+//  var calculateAge = getAge(dateofbirth.value);
+//  var date = document.getElementById('age').value;
+ 
+// // (getAge(document.getElementById('dob').value));
+ 
+//  if (calculateAge != date || parseInt(date) >= 150 || parseInt(date) < 0) {
+//  document.getElementById('ageError').innerHTML = "[JS]Please enter a valid age, based on you date of birth";
+//  return false;
+//  }
+//  else {
+//  document.getElementById('ageError').innerHTML = "";
+//  return true;
+//  }
+// }
+// function getAge(date) {
+//  var today = new Date();
+//  var birthDate = new Date(date);
+//  var age = today.getFullYear() - birthDate.getFullYear();
+//  var m = today.getMonth() - birthDate.getMonth();
+//  if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+//  age--;
+//  }
+//  return age;
+// }
+// function calculateAge() {
+//  var date = document.getElementById('date');
+//  var age = getAge(date.value);
+//  document.getElementById('age').value = age;
+// }
 
 // function validateAge(){
 

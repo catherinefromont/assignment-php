@@ -50,7 +50,7 @@
 			<div class="col-xs-6">
 				<div class="form-group">
 					<p>Enter your Date of Birth:</p>
-					<input id="date" value="<?= !empty($date) ? $date : '' ?>" type="date" class="form-control"  name="date" max="<?=date('Y-m-d')?>" ><span class="text-danger"><?=!empty($errors['date']) ? $errors['date'] : '' ?> </span>
+					<input id="date" value="<?= !empty($date) ? $date : '' ?>" type="date" class="form-control"  name="date" max="<?=date('Y-m-d')?>" onchange = "calculateAge()" ><span class="text-danger"><?=!empty($errors['date']) ? $errors['date'] : '' ?> </span>
 					<div id="dateError"></div>
 				</div>
 			</div>
