@@ -1,4 +1,4 @@
-
+<div class="animate-area">
 <div class="container form">
 
 
@@ -107,4 +107,5 @@
 
 </div>
 
+</div>
 </div>

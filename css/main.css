@@ -7,8 +7,27 @@ body{
 	background-size: cover;
 }
 
+@keyframes animate-area {
+		0%  {background-color: #D24D57;}
+	    20% {background-color: #9B59B6;}
+	    40% {background-color: #4ECDC4;}
+	    60% {background-color: #3FC380;}
+	    80% {background-color: #F4B350;}
+	    100% {background-color: #EEEEEE;}
+}
+
+div.animate-area	{ 
+	width: 100%; 
+	height: 100%; 
+	background-position: center;
+	background-repeat: repeat-x;
+	animation-duration: 30s;
+	animation-iteration-count: 20;
+	animation-name: animate-area;
+}
+
 div.thanks{
-	background-color: #cff4fb;
+	background-color: white !important;
 	border: 5px solid black;
 	margin-top: 30px;
 	margin-bottom: 30px;
@@ -21,7 +40,8 @@ h1.col-xs-12.heading{
 	
 
 div.col-xs-12.col-lg-10.col-lg-offset-1.contact{
-	background-image: url('background.jpg');
+	/*background-image: url('background.jpg');*/
+	background-color: white;
 	padding: 20px;
 	border: 5px solid black;
 	margin-top: 30px;
@@ -31,9 +51,9 @@ div.col-xs-12.col-lg-10.col-lg-offset-1.contact{
 
 }
 
-input.btn.btn-primary.btn-lg:hover{
+/*input.btn.btn-primary.btn-lg:hover{
 	background-color: #cff4fb;
-	}
+	}*/
 
 input.btn.btn-primary.btn-lg{
 	background-color: white;
@@ -62,9 +82,9 @@ div.thanks{
 
 }
 
-a.btn.btn-primary.btn-lg:hover{
-background-color: #cff4fb;
-}
+/*a.btn.btn-primary.btn-lg:hover{
+background-color: #cff4fb ;
+}*/
 
 a.btn.btn-primary.btn-lg{
 	background-color: white;

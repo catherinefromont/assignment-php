@@ -7,11 +7,12 @@ function validate() {
 	// var age = validateAge();
 	// var date = validateDate();
 	var date = validateDOB();
+	var date = validateDate();
 	var gender = validateGender();
 	var movie = validateMovie();
 
 		
-	// console.log('Name: ' + nameError);
+	// console.log('Name: ');
 	// console.log('Email: ' + emailError);
 	// console.log('Address: ' + addressError);
 	// console.log('Age: ' + ageError);
@@ -21,7 +22,7 @@ function validate() {
 
 	
 
-  if (name && email && address && gender && date && movie ){
+  if (name && email && address && gender && date && birth && movie){
   	
 
   return true;
@@ -97,7 +98,7 @@ if (calculateAge != date || parseInt(date) >= 150 || parseInt(date) < 0) {
 
 
 else {
- document.getElementById('ageError').innerHTML = "That fucking awesome your killing it JS";
+ document.getElementById('ageError').innerHTML = "is a valid age!";
  return true;
 }
 
@@ -116,6 +117,23 @@ function calculateAge() {
  var date = document.getElementById('date');
  var age = getAge(date.value);
  document.getElementById('age').value = age;
+}
+
+
+function validateDate(){
+
+  birth = document.getElementById('date').value;
+
+  if (birth == "") {
+    document.getElementById('dateError').innerHTML = "Please choose a valid date of birth";
+    return false;
+  }
+  else {
+    document.getElementById('dateError').innerHTML = "is a valid date of birth!";
+
+    return true;
+
+  }
 }
 
 // function validateDate() {
